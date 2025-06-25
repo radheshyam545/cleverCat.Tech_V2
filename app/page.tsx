@@ -259,23 +259,22 @@ export default function HomePage() {
               {
                 title: "Liking System",
                 description: "Let customers like videos to boost interaction and discover what content connects best",
-                icon: "❤️",
+                image: "/features/fea_2.webp",
               },
               {
                 title: "Carousel Look",
                 description: "On desktop, videos appear in a smooth carousel—easy to browse, hard to ignore",
-                icon: "🎠",
+                image: "/features/fea_1.webp",
               },
               {
                 title: "Reel Like Feed",
                 description: "On mobile, videos appear in a smooth Instagram reel feed, with infinite scroll",
-                icon: "▶️",
+                image: "/features/fea_3.webp",
               },
               {
                 title: "Minimize Video",
-                description:
-                  "Minimize videos while shopping to keep customers engaged without interrupting their journey",
-                icon: "📱",
+                description: "Minimize videos while shopping to keep customers engaged without interrupting their journey",
+                image: "/features/fea_4.webp",
               },
             ].map((feature, i) => (
               <Card
@@ -283,8 +282,14 @@ export default function HomePage() {
                 className="bg-slate-900/80 border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105"
               >
                 <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <span className="text-2xl">{feature.icon}</span>
+                  <div className="w-16 h-16 bg-gradient-to-br from-white to-pink-400 rounded-full flex items-center justify-center mb-6 mx-auto overflow-hidden">
+                    <Image
+                      src={feature.image}
+                      alt={`${feature.title} icon`}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-4 text-center">{feature.title}</h3>
                   <p className="text-gray-300 text-center leading-relaxed">{feature.description}</p>
@@ -621,7 +626,7 @@ export default function HomePage() {
       </section>
 
 
-  
+
 
       {/* Enhanced Testimonials Section */}
       <section className="py-20 px-4">

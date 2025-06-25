@@ -22,7 +22,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-gray-400 mb-4">
-              Let our AI Chatbot answer, recommend, and convert — all while you focus on growing your business.
+              Turn every scroll into a sale with interactive shoppable videos.
             </p>
             <div className="flex space-x-4">
               <Button
