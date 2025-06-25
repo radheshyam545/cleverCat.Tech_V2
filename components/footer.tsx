@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react"
+import Image from "next/image"
 
 export default function Footer() {
   return (
@@ -11,12 +12,14 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
-                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                </div>
-              </div>
-              <span className="text-white text-xl font-bold">Jugnoo</span>
+              <Image
+                // src="/logo/main_logo.png"
+                src="/logo/clevercat_logo_withname.webp"
+                alt="Jugnoo Logo"
+                width={200}
+                height={200}
+                className="rounded-full"
+              />
             </div>
             <p className="text-gray-400 mb-4">
               Let our AI Chatbot answer, recommend, and convert — all while you focus on growing your business.
@@ -94,7 +97,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-purple-500/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2023 CleverCat. All rights reserved.</p>
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2025 CleverCat. All rights reserved.</p>
             <div className="flex space-x-6">
               <Link href="/privacy" className="text-gray-400 hover:text-purple-400 text-sm transition-colors">
                 Privacy Policy

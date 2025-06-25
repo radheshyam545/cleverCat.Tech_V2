@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,12 +27,14 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
-              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-              </div>
-            </div>
-            <span className="text-white text-xl font-bold">Jugnoo</span>
+            <Image
+              // src="/logo/main_logo.png"
+              src="/logo/clevercat_logo_withname.webp"
+              alt="Jugnoo Logo"
+              width={200}
+              height={200}
+              className="rounded-full"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -81,9 +84,8 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`text-sm font-medium py-2 ${
-                    isActive(item.href) ? "text-purple-400" : "text-white hover:text-purple-300"
-                  }`}
+                  className={`text-sm font-medium py-2 ${isActive(item.href) ? "text-purple-400" : "text-white hover:text-purple-300"
+                    }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
