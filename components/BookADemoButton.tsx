@@ -8,7 +8,7 @@ const BookADemoButton = () => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/contact");
+    router.push("/more-info");
   };
 
   return (

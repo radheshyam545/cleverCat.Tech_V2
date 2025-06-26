@@ -15,7 +15,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Blogs", href: "/blogs" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/more-info" },
   ]
 
   const isActive = (path: string) => {
@@ -54,13 +54,13 @@ export default function Header() {
 
           <div className="hidden md:flex items-center gap-4">
             <Button asChild variant="ghost" className="text-white hover:text-purple-300 hover:bg-purple-500/10">
-              <Link href="/contact">Get in Touch</Link>
+              <Link href="/more-info">Get in Touch</Link>
             </Button>
             <Button
               asChild
               className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white"
             >
-              <Link href="/contact">Book Meeting</Link>
+              <Link href="/book-meeting">Book Meeting</Link>
             </Button>
           </div>
 
@@ -97,7 +97,7 @@ export default function Header() {
                   variant="ghost"
                   className="text-white hover:text-purple-300 hover:bg-purple-500/10 justify-center"
                 >
-                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/more-info" onClick={() => setIsMenuOpen(false)}>
                     Get in Touch
                   </Link>
                 </Button>
@@ -105,7 +105,7 @@ export default function Header() {
                   asChild
                   className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white justify-center"
                 >
-                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/book-meeting" onClick={() => setIsMenuOpen(false)}>
                     Book Meeting
                   </Link>
                 </Button>

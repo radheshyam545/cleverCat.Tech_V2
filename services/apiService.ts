@@ -1,15 +1,14 @@
 import axios from "axios";
 
-// const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://jugnooapp.clevercat.ai/api";
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://jugnooapp.clevercat.ai/api";
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
 
 interface FormData {
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  message: string;
-  storeName?: string;
-  websiteUrl?: string;
-  mobile?: string;
+  shopify_store: string;
+  phone: string;
 }
 
 interface ApiResponse {
@@ -20,7 +19,7 @@ interface ApiResponse {
 
 export const submitContactForm = async (formData: FormData): Promise<ApiResponse> => {
   try {
-    const response = await axios.post<ApiResponse>(`${API_BASE_URL}/lead/create`, formData, {
+    const response = await axios.post<ApiResponse>(`${API_BASE_URL}/lead/clevercat-tech/create`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

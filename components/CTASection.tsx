@@ -20,7 +20,7 @@ const CTASection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {/* Start Free Trial Button */}
           <button
-            onClick={() => router.push("/contact")}
+            onClick={() => router.push("/more-info")}
             className="relative inline-flex items-center justify-center px-7 py-3 rounded-full text-purple-900 font-semibold text-base bg-white overflow-hidden group transition-all duration-300"
           >
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-100 via-white to-purple-100 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
@@ -32,7 +32,7 @@ const CTASection = () => {
 
           {/* See It in Action Button */}
           <button
-            onClick={() => router.push("/contact")}
+            onClick={() => router.push("/more-info")}
             className="relative inline-flex items-center justify-center px-7 py-3 rounded-full text-white font-semibold text-base border border-white overflow-hidden group transition-all duration-300"
           >
             <span className="absolute inset-0 w-full h-full bg-white/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />

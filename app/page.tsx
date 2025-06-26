@@ -13,15 +13,15 @@ import ChatBotFeatures from "@/components/ChatBotFeatures"
 import PricingSection from "@/components/PricingSection"
 import BookADemoButton from "@/components/BookADemoButton"
 import CTASection from "@/components/CTASection"
-import { useRouter } from "next/navigation"
+import useNavigate from "@/hooks/useNavigate"
 
 export default function HomePage() {
 
-  const router = useRouter();
+  const { navigate } = useNavigate();
 
 
   const handleClick = () => {
-    router.push("/contact");
+    navigate("/more-info");
   };
 
   return (
@@ -159,7 +159,11 @@ export default function HomePage() {
                 <p className="text-purple-100 mb-6 leading-relaxed">
                   Easily import Instagram Reels to Shopify and unlock shoppable features that drive sales
                 </p>
-                <Button variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100 self-start">
+                <Button
+                  variant="secondary"
+                  className="bg-white text-purple-600 hover:bg-gray-100 self-start"
+                  onClick={handleClick}
+                >
                   Get Started Now
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -181,7 +185,11 @@ export default function HomePage() {
                   Boost sales with shoppable videos. Import Reels to Shopify, engage buyers instantly, and grow with
                   real results
                 </p>
-                <Button variant="link" className="text-purple-400 hover:text-purple-300 p-0 h-auto font-semibold">
+                <Button
+                  variant="link"
+                  className="text-purple-400 hover:text-purple-300 p-0 h-auto font-semibold"
+                  onClick={handleClick}
+                >
                   Learn More <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
@@ -221,6 +229,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-12 py-4 text-lg rounded-full"
+                onClick={handleClick}
               >
                 Install Now
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -241,7 +250,7 @@ export default function HomePage() {
               Our Features
             </Badge>
 
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">
               Convert Your Videos
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
@@ -406,6 +415,7 @@ export default function HomePage() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full"
+              onClick={handleClick}
             >
               Get Started Free
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -424,7 +434,7 @@ export default function HomePage() {
               Why Choose Us
             </Badge>
 
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">
               Boost Sales With
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
@@ -617,6 +627,7 @@ export default function HomePage() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full"
+              onClick={handleClick}
             >
               Start Converting Reels Today
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -638,7 +649,7 @@ export default function HomePage() {
                 Testimonial
               </Badge>
 
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">
                 What They Say{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                   About Us?
@@ -720,7 +731,8 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full"
-              >
+                onClick={handleClick}
+             >
                 Start Your Success Story
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
