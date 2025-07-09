@@ -732,7 +732,7 @@ export default function HomePage() {
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full"
                 onClick={handleClick}
-             >
+              >
                 Start Your Success Story
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -817,7 +817,7 @@ export default function HomePage() {
         </div>
       </section>
       {/* Chat Widget */}
-      <ChatWidget />
+      {/* <ChatWidget /> */}
     </>
   )
 }

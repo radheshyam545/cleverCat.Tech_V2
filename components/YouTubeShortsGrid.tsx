@@ -12,7 +12,7 @@ export default function YouTubeShortsGrid() {
       {shorts.map((id, index) => (
         <div key={index} className="aspect-[9/16] w-full overflow-hidden rounded-xl shadow-lg border border-gray-700">
           <iframe
-            src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&modestbranding=1&playsinline=1`}
+            src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=1&modestbranding=1&playsinline=1`}
             title={`YouTube Short ${index + 1}`}
             allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen

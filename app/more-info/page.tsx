@@ -34,17 +34,17 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
- const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
 
-  if (name === "phone") {
-    // Allow only digits (0–9)
-    const numericValue = value.replace(/\D/g, "")
-    setFormState((prev) => ({ ...prev, [name]: numericValue }))
-  } else {
-    setFormState((prev) => ({ ...prev, [name]: value }))
+    if (name === "phone") {
+      // Allow only digits (0–9)
+      const numericValue = value.replace(/\D/g, "")
+      setFormState((prev) => ({ ...prev, [name]: numericValue }))
+    } else {
+      setFormState((prev) => ({ ...prev, [name]: value }))
+    }
   }
-}
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -68,6 +68,12 @@ export default function ContactPage() {
           shopify_store: "",
           phone: "",
         })
+
+        // Open the Shopify App link in a new tab
+        setTimeout(() => {
+          window.open("https://apps.shopify.com/clevercat-shoppable-videos", "_blank")
+        }, 500) // optional delay
+
       } else {
         toast.error("Submission Failed", {
           description: response?.message || "Please try again later.",

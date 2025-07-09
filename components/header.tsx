@@ -33,6 +33,7 @@ export default function Header() {
               alt="Jugnoo Logo"
               width={200}
               height={200}
+              priority
               className="rounded-full"
             />
           </Link>
