@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -29,42 +30,62 @@ export default function Footer() {
                 variant="ghost"
                 size="icon"
                 className="rounded-full text-gray-400 hover:text-purple-400 hover:bg-purple-500/10"
+                onClick={() => {
+                  const facebook = process.env.NEXT_PUBLIC_FACEBOOK_LINK || "https://facebook.com/clevercat";
+                  window.open(facebook, "_blank");
+                }}
               >
                 <Facebook className="w-5 h-5" />
                 <span className="sr-only">Facebook</span>
               </Button>
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="icon"
                 className="rounded-full text-gray-400 hover:text-purple-400 hover:bg-purple-500/10"
+                onClick={() => {
+                  const twitter = process.env.NEXT_PUBLIC_TWITTER_LINK || "https://twitter.com/clevercat";
+                  window.open(twitter, "_blank");
+                }}
               >
                 <Twitter className="w-5 h-5" />
                 <span className="sr-only">Twitter</span>
-              </Button>
+              </Button> */}
               <Button
                 variant="ghost"
                 size="icon"
                 className="rounded-full text-gray-400 hover:text-purple-400 hover:bg-purple-500/10"
+                onClick={() => {
+                  const instagram = process.env.NEXT_PUBLIC_INSTAGRAM_LINK || "https://instagram.com/clevercat";
+                  window.open(instagram, "_blank");
+                }}
               >
                 <Instagram className="w-5 h-5" />
                 <span className="sr-only">Instagram</span>
               </Button>
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="icon"
                 className="rounded-full text-gray-400 hover:text-purple-400 hover:bg-purple-500/10"
+                onClick={() => {
+                  const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_LINK || "https://linkedin.com/company/clevercat";
+                  window.open(linkedin, "_blank");
+                }}
               >
                 <Linkedin className="w-5 h-5" />
                 <span className="sr-only">LinkedIn</span>
-              </Button>
-              <Button
+              </Button> */}
+              {/* <Button
                 variant="ghost"
                 size="icon"
                 className="rounded-full text-gray-400 hover:text-purple-400 hover:bg-purple-500/10"
+                onClick={() => {
+                  const github = process.env.NEXT_PUBLIC_GITHUB_LINK || "https://github.com/clevercat";
+                  window.open(github, "_blank");
+                }}
               >
                 <Github className="w-5 h-5" />
                 <span className="sr-only">GitHub</span>
-              </Button>
+              </Button> */}
             </div>
           </div>
 
@@ -78,7 +99,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div>
+          {/* <div>
             <h3 className="text-white font-semibold mb-4">Stay Updated</h3>
             <p className="text-gray-400 mb-4">Get the latest updates and tips delivered to your inbox.</p>
             <div className="flex flex-col gap-2">
@@ -91,14 +112,14 @@ export default function Footer() {
                 Subscribe
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-purple-500/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2025 CleverCat. All rights reserved.</p>
-            <div className="flex space-x-6">
+            {/* <div className="flex space-x-6">
               <Link href="/privacy" className="text-gray-400 hover:text-purple-400 text-sm transition-colors">
                 Privacy Policy
               </Link>
@@ -108,7 +129,7 @@ export default function Footer() {
               <Link href="/cookies" className="text-gray-400 hover:text-purple-400 text-sm transition-colors">
                 Cookie Policy
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

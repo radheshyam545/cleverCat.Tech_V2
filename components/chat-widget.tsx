@@ -24,7 +24,10 @@ export default function ChatWidget() {
 
       {/* Telegram Button */}
       <button
-        onClick={() => window.open("https://t.me/your_group_username", "_blank")}
+        onClick={() => {
+          const telegramLink = process.env.NEXT_PUBLIC_TELEGRAM_LINK || "https://t.me/clevercat_ai";
+          window.open(telegramLink, "_blank");
+        }}
         className="w-16 h-16 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg flex items-center justify-center"
       >
         <FaTelegramPlane size={32} /> {/* Icon size */}
@@ -32,7 +35,10 @@ export default function ChatWidget() {
 
       {/* WhatsApp Button */}
       <button
-        onClick={() => window.open("https://wa.me/919352200710", "_blank")}
+        onClick={() => {
+          const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919352200710";
+          window.open(`https://wa.me/${phone}`, "_blank");
+        }}
         className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg flex items-center justify-center"
       >
         <FaWhatsapp size={32} /> {/* Icon size */}
