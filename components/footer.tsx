@@ -19,6 +19,7 @@ export default function Footer() {
                 alt="Jugnoo Logo"
                 width={200}
                 height={200}
+                priority
                 className="rounded-full"
               />
             </div>

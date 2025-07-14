@@ -14,14 +14,16 @@ import PricingSection from "@/components/PricingSection"
 import BookADemoButton from "@/components/BookADemoButton"
 import CTASection from "@/components/CTASection"
 import useNavigate from "@/hooks/useNavigate"
+import Link from "next/link"
 
 export default function HomePage() {
 
   const { navigate } = useNavigate();
 
 
-  const handleClick = () => {
-    navigate("/more-info");
+  const handleClick = (event?: React.MouseEvent, path?: string) => {
+    event?.preventDefault();
+    navigate(path || "/more-info");
   };
 
   return (
@@ -59,14 +61,21 @@ export default function HomePage() {
           <p className="text-gray-300 mb-8">"Hurry to get free installations!"</p>
         </div>
 
-        {/* CTA Button */}
-        <div className="mb-16">
+        {/* CTA Buttons */}
+        <div className="mb-16 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
-            onClick={handleClick}
             className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full"
           >
             Install Now
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-4 text-lg font-semibold rounded-full bg-transparent"
+          >
+            <Link href="/conversion-checklist">Get Free Checklist 📋</Link>
           </Button>
         </div>
 
@@ -626,11 +635,11 @@ export default function HomePage() {
           <div className="text-center mt-16">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full w-full sm:w-auto"
               onClick={handleClick}
             >
               Start Converting Reels Today
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
             </Button>
           </div>
         </div>
@@ -730,11 +739,11 @@ export default function HomePage() {
               <p className="text-lg text-gray-300 mb-6">Join thousands of satisfied customers who trust CleverCat</p>
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full w-full sm:w-auto"
                 onClick={handleClick}
               >
                 Start Your Success Story
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Button>
             </div>
           </div>
