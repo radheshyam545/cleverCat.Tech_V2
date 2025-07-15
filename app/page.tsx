@@ -66,6 +66,7 @@ export default function HomePage() {
           <Button
             size="lg"
             className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full"
+            onClick={handleClick}
           >
             Install Now
           </Button>
