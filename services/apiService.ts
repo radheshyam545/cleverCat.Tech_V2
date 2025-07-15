@@ -58,20 +58,36 @@ export const generateStoreAudit = async (
   competitorUrl: string,
   name: string,
   email: string,
-  phone: string
+  phone: string,
+  subscription: any
+
 ): Promise<AuditData> => {
+
+  const formData = new FormData();
+  formData.append("storeUrl", storeUrl);
+  formData.append("competitorUrl", competitorUrl);
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("phone", phone);
+  formData.append("subscription", JSON.stringify(subscription)); // 👈 must stringify
+
+
   try {
-    const response = await axios.post<AuditData>(`${API_BASE_URL}/lead/clevercat-tech-lead-magnet/create`, {
-      storeUrl,
-      competitorUrl,
-      name,
-      email,
-      phone
-    }, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = await axios.post<AuditData>(`${API_BASE_URL}/lead/clevercat-tech-lead-magnet/create`,
+      formData,
+      //    {
+      //   storeUrl,
+      //   competitorUrl,
+      //   name,
+      //   email,
+      //   phone,
+      //   subscription
+      // },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
     return response.data;
   } catch (error: any) {
     console.error("Error generating store audit:", error);
