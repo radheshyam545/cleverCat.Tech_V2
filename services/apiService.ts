@@ -25,6 +25,13 @@ interface ChecklistLeadData {
   phone?: string;
 }
 
+interface CashbackLeadData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
+
 export const submitContactForm = async (formData: FormData): Promise<ApiResponse> => {
   try {
     const response = await axios.post<ApiResponse>(`${API_BASE_URL}/lead/clevercat-tech/create`, formData, {
@@ -50,6 +57,30 @@ export const submitChecklistLead = async (formData: ChecklistLeadData): Promise<
   } catch (error: any) {
     console.error("Error submitting checklist lead:", error);
     throw error.response?.data || { message: "Failed to submit checklist lead" };
+  }
+};
+
+export const submitCashbackLead = async (lead: CashbackLeadData): Promise<ApiResponse> => {
+  try {
+    const formData = new FormData();
+    formData.append("firstName", lead.firstName);
+    formData.append("lastName", lead.lastName);
+    formData.append("email", lead.email);
+    formData.append("phone", lead.phone);
+
+    const response = await axios.post<ApiResponse>(
+      `${API_BASE_URL}/cashback-leads`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data;
+  } catch (error: any) {
+    console.error("Error submitting cashback lead:", error);
+    throw error.response?.data || { message: "Failed to submit cashback lead" };
   }
 };
 

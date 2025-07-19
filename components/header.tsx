@@ -13,9 +13,7 @@ export default function Header() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Blogs", href: "/blogs" },
-    { name: "Contact", href: "/more-info" },
+    { name: "Scan Competitor Site", href: "/website-audit" },
   ]
 
   const isActive = (path: string) => {
@@ -54,6 +52,9 @@ export default function Header() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
+            <Button asChild variant="ghost" className="text-white hover:text-purple-300 hover:bg-purple-500/10">
+              <Link href="/website-audit">Scan Competitor Site</Link>
+            </Button>
             <Button asChild variant="ghost" className="text-white hover:text-purple-300 hover:bg-purple-500/10">
               <Link href="/more-info">Get in Touch</Link>
             </Button>
