@@ -24,8 +24,15 @@ import { AuditData } from "@/types/audit";
 import { useToast } from "@/hooks/useToast";
 import { subscribeToPush } from "@/utils/subscribeToPush"
 import EnablePush from "@/components/EnablePush"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useRouter, useSearchParams } from "next/navigation";
+
 
 export default function WebsiteAuditPage() {
+
+  
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,17 +44,33 @@ export default function WebsiteAuditPage() {
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [auditData, setAuditData] = useState<AuditData["data"] | null>(null);
   const { showToast } = useToast();
+  const [showGeneratingModal, setShowGeneratingModal] = useState(false);
+
+
+
+
+
+
+  const handleClick = () => {
+
+    router.push(`/more-info`);
+  }
+
+
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.name || !formData.email || !formData.website) return
 
-    const subscription = await subscribeToPush(); // 👈 Get push subscription
+    // const subscription = await subscribeToPush(); // 👈 Get push subscription
+    const subscription = "await"; // 👈 Get push subscription
 
     setIsAnalyzing(true)
     setShowResults(false)
     setAuditData(null)
+    setShowGeneratingModal(true)
     try {
+
       const res = await generateStoreAudit(
         formData.website,
         formData.competitorWebsite,
@@ -67,6 +90,7 @@ export default function WebsiteAuditPage() {
       showToast("error", err?.message || "Failed to analyze website. Please try again.");
     } finally {
       setIsAnalyzing(false);
+      setShowGeneratingModal(false);
     }
   }
 
@@ -147,6 +171,25 @@ export default function WebsiteAuditPage() {
   return (
     <>
       <div className="container mx-auto px-4 py-16">
+        {/* Generating Modal */}
+        <Dialog open={showGeneratingModal} onOpenChange={setShowGeneratingModal}>
+          <DialogContent className="max-w-md w-full bg-slate-900 border-purple-500/30 text-center">
+            <div className="flex flex-col items-center py-8">
+              <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mb-6">
+                <CheckCircle className="w-10 h-10 text-green-500" />
+              </div>
+              <h2 className="text-2xl font-bold text-white mb-4">Your Report is Being Generated!</h2>
+              <p className="text-gray-300 mb-4 text-base">
+                Your audit report will be ready in about <span className="text-green-400 font-semibold">1 minute</span>.<br />
+                As soon as it's done, you'll receive it directly in your email.
+              </p>
+              <p className="text-gray-400 text-sm mb-6">You can close this message and continue browsing. We'll handle the rest!</p>
+              <Button onClick={() => setShowGeneratingModal(false)} className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-8 py-3 rounded-full">
+                Close
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
         {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="flex justify-center mb-6">
@@ -616,15 +659,18 @@ export default function WebsiteAuditPage() {
                   Get personalized recommendations and expert help to optimize your website and beat your competition.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-8 py-3 rounded-full">
+                  <Button
+                    className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-8 py-3 rounded-full"
+                    onClick={handleClick}
+                  >
                     Get Expert Help
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="outline"
                     className="border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-3 rounded-full bg-transparent"
                   >
                     Download Full Report
-                  </Button>
+                  </Button> */}
                 </div>
               </CardContent>
             </Card>
@@ -632,7 +678,7 @@ export default function WebsiteAuditPage() {
         )}
       </div>
 
-      <EnablePush />
+      {/* <EnablePush /> */}
     </>
   )
 }
