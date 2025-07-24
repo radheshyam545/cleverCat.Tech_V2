@@ -17,16 +17,29 @@ import useNavigate from "@/hooks/useNavigate"
 import OnboardingModal from "@/components/onboarding-modal"
 import Link from "next/link"
 import { useState } from "react"
+import OnboardingForm from "@/components/onboarding-form"
+import { useRef } from "react"
 
 export default function HomePage() {
 
     const { navigate } = useNavigate();
     const [modalOpen, setModalOpen] = useState(false);
+    const onboardingFormRef = useRef<any>(null);
+    const onboardingFormContainerRef = useRef<HTMLDivElement>(null);
 
 
     const handleClick = (event?: React.MouseEvent, path?: string) => {
         event?.preventDefault();
         window.open("https://apps.shopify.com/clevercat-shoppable-videos", "_blank");
+    };
+
+    const scrollToOnboardingForm = () => {
+        if (onboardingFormContainerRef.current) {
+            onboardingFormContainerRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+            setTimeout(() => {
+                onboardingFormRef.current?.focusFirstInput?.();
+            }, 500);
+        }
     };
 
     return (
@@ -59,26 +72,18 @@ export default function HomePage() {
                         <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
                             {/* Register Now for White-gloves  */}
                         </span>{" "}
-                        Register Now for White-gloves Onboarding, Cashback and Free Consultancy
+                        Register Now for <br /> "White-Gloves Onboarding", Extended Trial and Free Consultancy
                     </h2>
                     {/* <p className="text-gray-300 mb-8">"Hurry "</p> */}
                 </div>
 
-                {/* CTA Buttons */}
-                <div className="mb-16 flex flex-col sm:flex-row gap-4 justify-center px-4 w-full">
-                    <div className="w-full sm:w-auto">
-                        <Button
-                            size="lg"
-                            className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full relative overflow-hidden w-full sm:w-auto"
-                            onClick={() => setModalOpen(true)}
-                        >
-                            <span className="hidden sm:inline">Register Now</span>
-                            <span className="sm:hidden">Register Now</span>
-                        </Button>
-                    </div>
+
+                {/* Onboarding Form - Embedded directly */}
+                <div className="mb-12" ref={onboardingFormContainerRef}>
+                    <OnboardingForm ref={onboardingFormRef} />
                 </div>
 
-                
+
 
 
                 {/* Live Now Section */}
@@ -91,6 +96,9 @@ export default function HomePage() {
                     </h2>
                     {/* <p className="text-gray-300 mb-8">"Hurry "</p> */}
                 </div>
+
+
+
 
                 <YouTubeShortsGrid />
             </section>
@@ -180,14 +188,25 @@ export default function HomePage() {
                                 <p className="text-purple-100 mb-6 leading-relaxed">
                                     Easily import Instagram Reels to Shopify and unlock shoppable features that drive sales
                                 </p>
-                                <Button
-                                    variant="secondary"
-                                    className="bg-white text-purple-600 hover:bg-gray-100 self-start"
-                                    onClick={handleClick}
-                                >
-                                    Get Started Now
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Button>
+                                <div className="flex flex-col sm:flex-row gap-4 mt-2 justify-center items-center">
+                                    <Button
+                                        variant="secondary"
+                                        className="w-full sm:w-auto bg-white text-purple-600 hover:bg-gray-100 px-6 py-3 text-base sm:text-lg font-medium rounded-full transition-all duration-300"
+                                        onClick={handleClick}
+                                    >
+                                        Get Started Now
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                    <Button
+                                        variant="secondary"
+                                        className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-6 py-3 text-base sm:text-lg font-medium rounded-full transition-all duration-300"
+                                        onClick={scrollToOnboardingForm}
+                                    >
+                                        Register Now
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </div>
+
                             </CardContent>
                         </Card>
                     </div>
@@ -246,13 +265,21 @@ export default function HomePage() {
                         </div>
 
                         {/* Bottom CTA Button */}
-                        <div className="text-center mt-12">
+                        <div className="text-center mt-12 flex flex-col md:flex-row justify-center gap-4">
                             <Button
                                 size="lg"
                                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-12 py-4 text-lg rounded-full"
                                 onClick={handleClick}
                             >
                                 Install Now
+                                <ArrowRight className="w-5 h-5 ml-2" />
+                            </Button>
+                            <Button
+                                size="lg"
+                                className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-4 text-lg rounded-full"
+                                onClick={scrollToOnboardingForm}
+                            >
+                                Register Now
                                 <ArrowRight className="w-5 h-5 ml-2" />
                             </Button>
                         </div>
@@ -366,7 +393,7 @@ export default function HomePage() {
                                 </div>
                                 <CardHeader className="pb-4">
                                     <CardTitle className="text-2xl font-bold text-white">CleverCat</CardTitle>
-                                    <div className="text-3xl font-bold text-green-400">FREE</div>
+                                    <div className="text-3xl font-bold text-green-400">FREE - $9</div>
                                 </CardHeader>
                                 <CardContent className="space-y-3">
                                     {[
@@ -433,14 +460,24 @@ export default function HomePage() {
                     {/* Bottom CTA */}
                     <div className="text-center mt-12">
                         <p className="text-xl text-gray-300 mb-6">Why pay hundreds when you can get the same features for free?</p>
-                        <Button
-                            size="lg"
-                            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full"
-                            onClick={handleClick}
-                        >
-                            Get Started Free
-                            <ArrowRight className="w-5 h-5 ml-2" />
-                        </Button>
+                        <div className="flex flex-col sm:flex-row justify-center gap-4 px-4">
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-base sm:text-lg font-medium rounded-full transition-all duration-300"
+                                onClick={handleClick}
+                            >
+                                Get Started Free
+                                <ArrowRight className="w-5 h-5 ml-2" />
+                            </Button>
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-4 text-base sm:text-lg font-medium rounded-full transition-all duration-300"
+                                onClick={scrollToOnboardingForm}
+                            >
+                                Register Now
+                                <ArrowRight className="w-5 h-5 ml-2" />
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -768,10 +805,9 @@ export default function HomePage() {
                 <Button
                     size="lg"
                     className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full w-full sm:w-auto mb-6"
-                    onClick={() => setModalOpen(true)}
+                    onClick={scrollToOnboardingForm}
                 >
-                    <span className="hidden sm:inline">Register Now</span>
-                    <span className="sm:hidden">Register Now</span>
+                    Get Started Now
                 </Button>
             </section>
 
@@ -846,7 +882,7 @@ export default function HomePage() {
             {/* Chat Widget */}
             {/* <ChatWidget /> */}
             {/* Onboarding Modal (single instance at root) */}
-            <OnboardingModal open={modalOpen} onOpenChange={setModalOpen} />
+            {/* <OnboardingModal open={modalOpen} onOpenChange={setModalOpen} /> */}
         </>
     )
 }

@@ -5,7 +5,7 @@ import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa"
 
 export default function ChatWidget() {
   const [isVisible, setIsVisible] = useState(true)
-
+//  hi i need some queries related to clevercat ai
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
 
@@ -36,8 +36,9 @@ export default function ChatWidget() {
       {/* WhatsApp Button */}
       <button
         onClick={() => {
-          const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919352200710";
-          window.open(`https://wa.me/${phone}`, "_blank");
+          const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "917877194258";
+          const message = encodeURIComponent("hi i need some queries related to clevercat ai");
+          window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
         }}
         className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg flex items-center justify-center"
       >

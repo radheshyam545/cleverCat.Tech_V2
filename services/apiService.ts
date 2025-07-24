@@ -26,10 +26,10 @@ interface ChecklistLeadData {
 }
 
 interface CashbackLeadData {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
   phone: string;
+  website: string;
 }
 
 export const submitContactForm = async (formData: FormData): Promise<ApiResponse> => {
@@ -63,10 +63,10 @@ export const submitChecklistLead = async (formData: ChecklistLeadData): Promise<
 export const submitCashbackLead = async (lead: CashbackLeadData): Promise<ApiResponse> => {
   try {
     const formData = new FormData();
-    formData.append("firstName", lead.firstName);
-    formData.append("lastName", lead.lastName);
+    formData.append("name", lead.name);
     formData.append("email", lead.email);
     formData.append("phone", lead.phone);
+    formData.append("website", lead.website);
 
     const response = await axios.post<ApiResponse>(
       `${API_BASE_URL}/cashback-leads`,
