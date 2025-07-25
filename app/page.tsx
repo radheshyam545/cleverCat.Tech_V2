@@ -182,33 +182,32 @@ export default function HomePage() {
                         </Card>
 
                         {/* Instagram Reels CTA */}
-                        <Card className="bg-gradient-to-br from-purple-600/80 to-pink-600/80 border-purple-500/30">
-                            <CardContent className="p-6 h-full flex flex-col justify-center">
-                                <h3 className="text-2xl font-bold text-white mb-4">Add Instagram Reels To Your Shopify Store</h3>
-                                <p className="text-purple-100 mb-6 leading-relaxed">
-                                    Easily import Instagram Reels to Shopify and unlock shoppable features that drive sales
-                                </p>
-                                <div className="flex flex-col sm:flex-row gap-4 mt-2 justify-center items-center">
-                                    <Button
-                                        variant="secondary"
-                                        className="w-full sm:w-auto bg-white text-purple-600 hover:bg-gray-100 px-6 py-3 text-base sm:text-lg font-medium rounded-full transition-all duration-300"
-                                        onClick={handleClick}
-                                    >
-                                        Get Started Now
-                                        <ArrowRight className="w-4 h-4 ml-2" />
-                                    </Button>
-                                    <Button
-                                        variant="secondary"
-                                        className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-6 py-3 text-base sm:text-lg font-medium rounded-full transition-all duration-300"
-                                        onClick={scrollToOnboardingForm}
-                                    >
-                                        Register Now
-                                        <ArrowRight className="w-4 h-4 ml-2" />
-                                    </Button>
-                                </div>
-
-                            </CardContent>
-                        </Card>
+                        <Card className="bg-gradient-to-br from-purple-600/80 to-pink-600/80 border-purple-500/30 w-full max-w-3xl mx-auto">
+    <CardContent className="p-4 sm:p-6 h-full flex flex-col justify-center">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Add Instagram Reels To Your Shopify Store</h3>
+        <p className="text-purple-100 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+            Easily import Instagram Reels to Shopify and unlock shoppable features that drive sales
+        </p>
+        <div className="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-6 mt-2 sm:mt-3 md:mt-4 justify-center items-center px-2 sm:px-4 md:px-6">
+            <Button
+                variant="secondary"
+                className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] md:min-w-[180px] bg-white text-purple-600 hover:bg-gray-100 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-sm sm:text-base md:text-lg font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
+                onClick={handleClick}
+            >
+                Get Started Now
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-2" />
+            </Button>
+            <Button
+                variant="secondary"
+                className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] md:min-w-[180px] bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-sm sm:text-base md:text-lg font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
+                onClick={scrollToOnboardingForm}
+            >
+                Register Now
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-2" />
+            </Button>
+        </div>
+    </CardContent>
+</Card>
                     </div>
                 </div>
             </section>

@@ -30,6 +30,7 @@ interface CashbackLeadData {
   email: string;
   phone: string;
   website: string;
+  hasShopifyStore?: boolean;
 }
 
 export const submitContactForm = async (formData: FormData): Promise<ApiResponse> => {
@@ -67,6 +68,7 @@ export const submitCashbackLead = async (lead: CashbackLeadData): Promise<ApiRes
     formData.append("email", lead.email);
     formData.append("phone", lead.phone);
     formData.append("website", lead.website);
+    formData.append("hasShopifyStore", String(lead.hasShopifyStore));
 
     const response = await axios.post<ApiResponse>(
       `${API_BASE_URL}/cashback-leads`,

@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Users, Zap, Gift } from "lucide-react"
 import { submitCashbackLead } from "@/services/apiService"
 import { useToast } from "@/hooks/useToast"
+import { Checkbox } from "@/components/ui/checkbox"
 
 const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
   const { showToast } = useToast();
@@ -23,17 +24,27 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
     email: "",
     phone: "",
     website: "",
+    hasShopify: true as boolean, // default to Yes
   })
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+  const handleInputChange = (field: string, value: string | boolean | null) => {
+    // If switching to No for hasShopify, clear website
+    if (field === "hasShopify" && value === false) {
+      setFormData((prev) => ({ ...prev, hasShopify: false, website: "" }));
+    } else {
+      setFormData((prev) => ({ ...prev, [field]: value }));
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Validation: all fields required, phone must be numeric
-    if (!formData.name || !formData.email || !formData.phone || !formData.website) {
-      showToast("error", "All fields are required.");
+    if (!formData.name || !formData.email || !formData.phone || formData.hasShopify === null) {
+      showToast("error", "All fields are required, including Shopify store selection.");
+      return;
+    }
+    if (formData.hasShopify && !formData.website) {
+      showToast("error", "Shopify Store URL is required if you have a Shopify store.");
       return;
     }
     if (!/^[0-9]+$/.test(formData.phone)) {
@@ -47,6 +58,7 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
         email: formData.email,
         phone: formData.phone,
         website: formData.website,
+        hasShopifyStore: formData.hasShopify, // include in submit
       });
       setIsSuccess(true);
       showToast("success", "Registration successful! We will contact you soon.");
@@ -64,6 +76,7 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
       email: "",
       phone: "",
       website: "",
+      hasShopify: true,
     })
   }
 
@@ -201,22 +214,55 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="sm:col-span-2">
-              <Label htmlFor="website" className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
-                Website URL *
-              </Label>
-              <Input
-                id="website"
-                type="text"
-                value={formData.website}
-                onChange={(e) => handleInputChange("website", e.target.value)}
-                placeholder="https://yourwebsite.com"
-                required
-                className="bg-slate-800 border-purple-500/30 text-white text-sm sm:text-base h-12"
-              />
+          {/* Shopify Radio Buttons - move above Website URL */}
+          <div className="sm:col-span-2 mb-2">
+            <Label className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
+              Do You Have a Shopify Store? <span className="text-red-500">*</span>
+            </Label>
+            <div className="flex gap-6 items-center mt-1">
+              <label className="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="hasShopify"
+                  value="yes"
+                  checked={formData.hasShopify === true}
+                  onChange={() => handleInputChange("hasShopify", true)}
+                  className="form-radio h-5 w-5 text-green-600 focus:ring-green-500 checked:bg-green-600 checked:border-green-600 focus:border-green-600"
+                />
+                <span className="ml-2 text-gray-200 text-sm sm:text-base">Yes</span>
+              </label>
+              <label className="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="hasShopify"
+                  value="no"
+                  checked={formData.hasShopify === false}
+                  onChange={() => handleInputChange("hasShopify", false)}
+                  className="form-radio h-5 w-5 text-green-600 focus:ring-green-500 checked:bg-green-600 checked:border-green-600 focus:border-green-600"
+                />
+                <span className="ml-2 text-gray-200 text-sm sm:text-base">No</span>
+              </label>
             </div>
           </div>
+
+          {formData.hasShopify && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="sm:col-span-2">
+                <Label htmlFor="website" className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
+                  Shopify Store URL *
+                </Label>
+                <Input
+                  id="website"
+                  type="text"
+                  value={formData.website}
+                  onChange={(e) => handleInputChange("website", e.target.value)}
+                  placeholder="https://yourwebsite.com"
+                  required
+                  className="bg-slate-800 border-purple-500/30 text-white text-sm sm:text-base h-12"
+                />
+              </div>
+            </div>
+          )}
 
           <Button
             type="submit"
