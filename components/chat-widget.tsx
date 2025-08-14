@@ -36,7 +36,8 @@ export default function ChatWidget() {
       {/* WhatsApp Button */}
       <button
         onClick={() => {
-          const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "917877194258";
+          // const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "917877194258";
+          const phone = "918847224835"
           const message = encodeURIComponent("hi i need some queries related to clevercat ai");
           window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
         }}
