@@ -1,7 +1,8 @@
 import axios from "axios";
 import { AuditData } from "@/types/audit";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://jugnooapp.clevercat.ai/api";
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://jugnooapp.clevercat.ai/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://junoapp.clevercat.ai/api";
 // const API_BASE_URL = "http://localhost:5000/api";
 
 interface FormData {

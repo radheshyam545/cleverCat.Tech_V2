@@ -167,7 +167,7 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="sm:col-span-2">
               <Label htmlFor="name" className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
-                Name *
+                Name <span className="text-red-500">*</span>
               </Label>
               <Input
                 id="name"
@@ -183,7 +183,7 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="email" className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
-                Email Address *
+                Email Address <span className="text-red-500">*</span>
               </Label>
               <Input
                 id="email"
@@ -197,7 +197,7 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
             </div>
             <div>
               <Label htmlFor="phone" className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
-                Phone Number *
+                Phone Number <span className="text-red-500">*</span>
               </Label>
               <Input
                 id="phone"
@@ -215,7 +215,7 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
           </div>
 
           {/* Shopify Radio Buttons - move above Website URL */}
-          <div className="sm:col-span-2 mb-2">
+          {/* <div className="sm:col-span-2 mb-2">
             <Label className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
               Do You Have a Shopify Store? <span className="text-red-500">*</span>
             </Label>
@@ -243,13 +243,13 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
                 <span className="ml-2 text-gray-200 text-sm sm:text-base">No</span>
               </label>
             </div>
-          </div>
+          </div> */}
 
           {formData.hasShopify && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="sm:col-span-2">
                 <Label htmlFor="website" className="text-gray-300 text-sm sm:text-base mb-2 block text-left">
-                  Shopify Store URL *
+                  Shopify Store URL <span className="text-red-500">*</span> <span className="text-gray-400 text-xs sm:text-sm">(You Must Have a Shopify Store to use this app)</span>
                 </Label>
                 <Input
                   id="website"
@@ -275,7 +275,7 @@ const OnboardingForm = forwardRef(function OnboardingForm(props, ref) {
               </>
             ) : (
               <>
-                Register Now 
+                Register Now
               </>
             )}
           </Button>
