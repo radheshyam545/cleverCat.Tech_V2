@@ -116,23 +116,31 @@ export default function Footer() {
           </div> */}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-purple-500/20 pt-8">
+       
+
+        <div className="border-t border-purple-500/30 pt-8 pb-6">
+          {/* Top Row */}
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2025 CleverCat. All rights reserved.</p>
-            {/* <div className="flex space-x-6">
-              <Link href="/privacy" className="text-gray-400 hover:text-purple-400 text-sm transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-purple-400 text-sm transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/cookies" className="text-gray-400 hover:text-purple-400 text-sm transition-colors">
-                Cookie Policy
-              </Link>
-            </div> */}
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              © 2025 <span className="text-purple-400 font-semibold">CleverCat</span>. All rights reserved.
+            </p>
+          </div>
+
+          {/* Divider Line + Center Text */}
+          <div className="border-t border-purple-500/20 mt-6 pt-4 text-center px-4">
+            <p className="text-xs md:text-sm text-white font-medium">
+              This website is owned and operated by{" "}
+              <span className="font-bold text-yellow-300">Invictus Alpha LLP</span>.
+              <br />
+              <span className="font-semibold text-purple-400">clevercat.ai</span> is a property of{" "}
+              <span className="font-bold text-yellow-300">Invictus Alpha LLP</span>.
+            </p>
           </div>
         </div>
+
+
+
+
       </div>
     </footer>
   )
